@@ -6,7 +6,7 @@ class Rectangle
 {
     
     
-    float  rectarea(float sum)
+    double  rectarea(double rect_area)
 	    {
 	        
 	        Scanner sc = new Scanner(System.in);
@@ -15,13 +15,13 @@ class Rectangle
             float l = sc.nextInt();
             System.out.print("enter the breadth");
             float b = sc.nextInt();
-            float rect_area=l*b;
+            rect_area=l*b;
             
             
             System.out.println("the area of rectangle is " + rect_area);
             
-            sum =sum +rect_area;
-            return sum;
+            
+            return rect_area;
             
             
         }
@@ -29,19 +29,19 @@ class Rectangle
 
 class Square
 {
-    float sqarea(float sum)
+    double sqarea(double sq_area)
     {
         
         Scanner sc = new Scanner(System.in);
         System.out.print("enter the side");
         float s = sc.nextInt();
-        float sq_area=s*s;
+        sq_area=s*s;
         
         
         System.out.println("the area of square is " + sq_area);
-        sum=sum+sq_area;
         
-        return sum;
+        
+        return sq_area;
         
         
     }
@@ -49,25 +49,25 @@ class Square
 
 class Circle
 {
-    double cirarea(double sum)
+    double cirarea(double cir_area)
     {
         
         double pi = 3.14;
         Scanner sc = new Scanner(System.in);
         System.out.print("enter the raidius");
         float r = sc.nextInt();
-        double cir_area=pi*r*r;
+        cir_area=pi*r*r;
         
         
         System.out.println("the area of circle is " + cir_area);
-        sum=sum+cir_area;
-        return sum;
+        
+        return cir_area;
     }
 }
 
 class Triangle
 {
-    double triarea(double sum)
+    double triarea(double tri_area)
     {
         
         Scanner sc = new Scanner(System.in);
@@ -75,30 +75,30 @@ class Triangle
         float b = sc.nextInt();
         System.out.print("enter the height");
         float h = sc.nextInt();
-        double tri_area=0.5*b*h;
+        tri_area=0.5*b*h;
         
         
         System.out.println("the area of triangle is " + tri_area);
-        sum=sum+tri_area;
-        return sum;
+        
+        return tri_area;
     }
 }
 
 class Parallelogram
 {
-    float parrarea(float sum)
+    double parrarea(double parr_area)
     {
         Scanner sc = new Scanner(System.in);
         System.out.print("enter the base");
         float b = sc.nextInt();
         System.out.print("enter the height");
         float h = sc.nextInt();
-        float parr_area=b*h;
+        parr_area=b*h;
         
         
         System.out.println("the area of parallelogram is " + parr_area);  
-        sum=sum+parr_area;
-        return sum;
+        
+        return parr_area;
     }
 }
 
@@ -110,7 +110,7 @@ class Main
     
     public static void main(String[] args)
 	{
-	    float sum=0;
+	    double sum=0;
         
         Rectangle obj1 = new Rectangle();
         Square obj2 = new Square();

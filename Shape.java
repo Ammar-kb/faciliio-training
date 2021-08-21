@@ -1,9 +1,12 @@
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
+import java.util.ArrayList.*;
 
 abstract class Shape
 {
+
     double l,b;
     
     double area;
@@ -21,7 +24,7 @@ class Rectangle extends Shape
 	        area = l *b ;
             
             
-            System.out.println("the area of rectangle is " + area);
+            System.out.printf("Rectangle length is %s breadth is %s area is %s ",l,b,area);
             
             return area;
         }
@@ -35,6 +38,7 @@ class Rectangle extends Shape
         b = sc.nextInt();
         
     }
+    
 }
 
 
@@ -44,7 +48,7 @@ class Square extends Shape
     public double printarea()
     {
         area=l*l;
-        System.out.println("the area of square is " + area);
+        System.out.printf("square  side is %s area is %s ",l,area);
         return area;
     }
     
@@ -66,7 +70,7 @@ class Circle extends Shape
     {
         double pi = 3.14;
         area=pi*l*l;
-        System.out.println("the area of circle is " + area);
+        System.out.printf("Circle radius is %s area is %s",l,area);
         return area;
     }
     
@@ -85,7 +89,7 @@ class Triangle extends Shape
     public double printarea()
     {
         area=0.5*l*b;
-        System.out.println("the area of triangle is " + area);
+        System.out.printf("triangle base is %s heaight is %s area is %s ",l,b,area);
         return area;
         
     }
@@ -107,7 +111,7 @@ class Parallelogram extends Shape
     public double printarea()
     {
         area=l*b;
-        System.out.println("the area of parallelogram is " + area);
+        System.out.println("Parallelogram base is %s height is %s "l,b,area);
         return area;
     }
     
@@ -129,13 +133,22 @@ class Main
     
     public static void main(String[] args)
 	{
-	    
-        double sum=0;
-        Rectangle r = new Rectangle();
-        Square s = new Square();
-        Circle c = new Circle();
-        Triangle t = new Triangle();
-        Parallelogram p = new Parallelogram();
+	    int a=0;
+	    int b=0;
+	    int d=0;
+	    int f=0;
+        int i;
+        int j;
+        int k;
+        
+        //ArrayList<Rectangle> r = new ArrayList<Rectangle>();
+        
+        
+        Rectangle r[] = new Rectangle[5];
+        Square s[] = new Square[5];
+        Circle c[] = new Circle[5];
+        Triangle t[] = new Triangle[5];
+        Parallelogram p[] = new Parallelogram[5];
        
         
         
@@ -144,44 +157,56 @@ class Main
         System.out.print("enter total shapes ");
         int n = sc.nextInt();
         
-      for(int i=0;i<n;i++)
+      for(i=0;i<n;i++)
         {
             System.out.println("enter shape ");
             String shape = sc.next();
             if(shape.equals("rectangle"))
             {
-                r.input();
-                r.printarea();
-                sum=sum+r.area;
+                
+                
+                a++;
+                r[i]=new Rectangle();
+                
+                r[i].input();
+                
+                
+                
                 
                 
             }
             else if(shape.equals("square"))
             {
-                s.input();
-                s.printarea();
-                sum=sum+s.area;
+                b++;
+                s[i]=new Square();
+                s[i].input();
+                
+                
                 
             }
             else if(shape.equals("circle"))
             {
-                c.input();
-                c.printarea();
-                sum=sum+c.area;
+                d++;
+                c[i]=new Circle();
+                c[i].input();
+                
             
                 
             }
             else if(shape.equals("triangle"))
             {
-                t.input();
-                t.printarea();
-                sum=sum+t.area;
+                e++;
+                t[i]=new Triangle();
+                t[i].input();
+                
             }
             else if(shape.equals("parallelogram"))
             {
-                p.input();
-                p.printarea();
-                sum=sum+p.area;
+                f++;
+                p[i]=new Parallelogram();
+                p[i].input();
+               
+                
             }
             
             else
@@ -189,7 +214,19 @@ class Main
               System.out.println("sorry not found");  
             }
             
-        }System.out.println("the total area is " + sum);  
+        }
+        //to print rectangle  area
+        for(j=0;j<=a;j++)
+        {
+            r[j].printarea();
+        }
+        // to print square area...... giving null pointer exception error;
+        for(k=0;k<=b;k++)
+        {
+            s[k].printarea();
+        }
+        
 	}
 }
             
+

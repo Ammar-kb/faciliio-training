@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -10,23 +9,23 @@ abstract class Shape
     double l,b;
     
     double area;
-    abstract public double printarea();
+    abstract public void printarea();
     abstract public void input();
-    
+    abstract public double calarea();
 }
 class Rectangle extends Shape
 {
     
     
-    public double printarea()
+    public void printarea()
 	    {
 	        
-	        area = l *b ;
+	        
             
             
-            System.out.printf("Rectangle: length is %s breadth is %s area is %s ",l,b,area);
+            System.out.printf("\nRectangle: length is %s breadth is %s area is %s ",l,b,area);
             
-            return area;
+            
         }
     
     public void input()
@@ -38,6 +37,12 @@ class Rectangle extends Shape
         b = sc.nextInt();
         
     }
+    public double calarea()
+    {
+        area = l *b ;
+        return area;
+        
+    }
     
 }
 
@@ -45,11 +50,11 @@ class Rectangle extends Shape
 
 class Square extends Shape
 {
-    public double printarea()
+    public void printarea()
     {
-        area=l*l;
-        System.out.printf("square:  side is %s area is %s ",l,area);
-        return area;
+        
+        System.out.printf("\nsquare:  side is %s area is %s ",l,area);
+        
     }
     
     public void input()
@@ -59,6 +64,11 @@ class Square extends Shape
         l = sc.nextInt();
         
     }
+    public double calarea()
+    {
+        area=l*l;
+        return area;
+    }
         
 }
 
@@ -66,12 +76,11 @@ class Square extends Shape
 
 class Circle extends Shape
 {
-    public double printarea()
+    public void printarea()
     {
-        double pi = 3.14;
-        area=pi*l*l;
-        System.out.printf("Circle: radius is %s area is %s",l,area);
-        return area;
+        
+        System.out.printf("\nCircle: radius is %s area is %s",l,area);
+        
     }
     
     public void input()
@@ -80,17 +89,23 @@ class Circle extends Shape
         System.out.print("enter the radius ");
         l=sc.nextInt();
     }
+    public double calarea()
+    {
+       double pi = 3.14;
+       area=pi*l*l; 
+       return area;
+    }
     
 }
 
 
 class Triangle extends Shape
 {
-    public double printarea()
+    public void printarea()
     {
-        area=0.5*l*b;
-        System.out.printf("triangle: base is %s heaight is %s area is %s ",l,b,area);
-        return area;
+        
+        System.out.printf("\ntriangle: base is %s heaight is %s area is %s ",l,b,area);
+        
         
     }
     
@@ -102,17 +117,22 @@ class Triangle extends Shape
         System.out.print("enter the height ");
         b=sc.nextInt();
     }
+    public double calarea()
+    {
+        area=0.5*l*b;
+        return area;
+    }
 }
 
 
 
 class Parallelogram extends Shape
 {
-    public double printarea()
+    public void printarea()
     {
-        area=l*b;
-        System.out.printf("Parallelogram: base is %s height is %s area is %s ",l,b,area);
-        return area;
+       
+        System.out.printf("\nParallelogram: base is %s height is %s area is %s ",l,b,area);
+        
     }
     
     public void input()
@@ -122,6 +142,11 @@ class Parallelogram extends Shape
         l=sc.nextInt();
         System.out.print("enter the height ");
         b=sc.nextInt();
+    }
+    public double calarea()
+    {
+         area=l*b;
+         return area;
     }
     
 }
@@ -137,12 +162,10 @@ class Main
         int i;
         int j;
         
-        
+        double total=0;
         Shape s[] = new Shape[5];
         
-        //Shape s;
-        //s=new Rectangle();
-        //s=new Square();
+        
         
         
         
@@ -164,7 +187,7 @@ class Main
                 
                 
                 s[i].input();
-                
+                total=total+s[i].calarea();
                 
                 
                 
@@ -174,6 +197,7 @@ class Main
             {
                 s[i]=new Square();
                 s[i].input();
+                total=total+s[i].calarea();
                 
                 
                 
@@ -182,7 +206,7 @@ class Main
             {
                 s[i]=new Circle();
                 s[i].input();
-                
+                total=total+s[i].calarea();
             
                 
             }
@@ -190,12 +214,16 @@ class Main
             {
                 s[i]=new Triangle();
                 s[i].input();
+                total=total+s[i].calarea();
+                
                 
             }
             else if(shape.equals("parallelogram"))
             {
                 s[i]=new Parallelogram();
                 s[i].input();
+                total=total+s[i].calarea();
+                
                
                 
             }
@@ -210,8 +238,8 @@ class Main
         {
             s[j].printarea();
         }
+        System.out.println("\nthe total area is: " + total);
         
 	}
 }
             
-

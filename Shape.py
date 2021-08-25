@@ -1,28 +1,37 @@
-from abc import ABC, abstractmethod
+
+from abc import ABC,abstractmethod
 
 class Shape(ABC):
     
+    global l,b,area
     
     
-    @abstractmethod
-    def printarea(self):
-        pass
+    
+    
+    
     @abstractmethod
     def inputuser(self):
         pass
+    @abstractmethod
+    def calarea(self):
+        pass
+    @abstractmethod
+    def printarea(self):
+        pass
 
-    
+
 class Rectangle(Shape):
-    
     def inputuser(self):
         self.l=float(input("enter the length "))
         self.b=float(input("enter the breadth "))
     
     def printarea(self):
-        area=self.l*self.b
-        print("the area of rectangle is " + str(area))
-        return area
         
+        print("rectangle: side is" +str(self.l)+ "breadth is " + str(self.b)+ "area is" + str(self.area))
+    
+    def calarea(self):
+        self.area=self.l*self.b
+        return self.area
     
         
 
@@ -33,9 +42,13 @@ class Square(Shape):
         
     
     def printarea(self):
-        area=self.l*self.l
-        print("the area of square is " + str(area))
-        return area
+        
+        print("square: side is" +str(self.l)+ "area is" + str(self.area))
+        
+        
+    def calarea(self):
+        self.area=self.l*self.l
+        return self.area
         
         
 class Circle(Shape):
@@ -44,10 +57,14 @@ class Circle(Shape):
         self.l=float(input("enter the radius "))
 
     def printarea(self):
+       
+        print("circle: radius is" +str(self.l)+"area  is " + str(self.area))
+        
+    
+    def calarea(self):
         pi=3.14
-        area=pi*self.l*self.l
-        print("the area of circle is " + str(area))
-        return area
+        self.area=pi*self.l*self.l
+        return self.area
         
     
         
@@ -59,9 +76,14 @@ class Triangle(Shape):
         self.b=float(input("enter the height "))
 
     def printarea(self):
-        area=0.5*self.l*self.b
-        print("the area of triangle is " + str(area))
-        return area
+        
+        print("triangle: base is " +str(self.l)+"height is "+str(self.b)+" area is " + str(self.area))
+        return self.area
+    
+    def calarea(self):
+        
+        self.area=0.5*self.l*self.b
+        return self.area
     
     
         
@@ -72,57 +94,90 @@ class Parallelogram(Shape):
         self.b=float(input("enter the height "))
 
     def printarea(self):
-        area=self.l*self.b
-        print("the area of triangle is " + str(area))
-        return area 
-    
+        
+        print("Parallelogram: base is "+str(self.l)+"height is"+str(self.b)+"area is " + str(self.area))
+         
+        
+    def calarea(self):
+        self.area=self.l*self.b
+        return self.area
     
 
 
-r=Rectangle()
-s=Square()
-c=Circle()
-t=Triangle()
-p=Parallelogram()
+
+
+Array=[]
+
 
 total=0
+
 
 n=int(input("enter total shapes "))
 for i in range(0,n):
     shape=input("enter a shape ")
     if shape=="rectangle":
+        r=Rectangle()
         r.inputuser()
-        r.printarea()
-        total=total+r.printarea()
+        
+        
+        
+        
+        total=total+r.calarea()
+        
+        Array.append(r)
     
     elif shape=="square":
+        s=Square()
         s.inputuser()
-        s.printarea()
-        total=total+s.printarea()
+        
+        
+        
+        
+        total=total+s.calarea()
+        
+        Array.append(s)
     
     elif shape=="circle":
+        c=Circle()
         c.inputuser()
-        c.printarea()
-        total=total+c.printarea()
+        
+        
+        
+        
+        total=total+c.calarea()
+        
+        Array.append(c)
     
     elif shape=="triangle":
+        t=Triangle()
         t.inputuser()
-        t.printarea()
-        total=total+t.printarea()
+        
+        
+        
+        
+        total=total+t.calarea()
+        
+        Array.append(t)
     
     elif shape=="parallelogram":
+        p=Parallelogram()
         p.inputuser()
-        p.printarea()
-        total=total+p.printarea()
+        
+        
+        
+        
+        total=total+p.calarea()
+        
+        Array.append(p)
     else:
         print("shape was not found")
 
-print("the total area is "+ str(total))
-        
-        
+for i in Array:
+    i.printarea()
 
 
-        
-        
-        
+
+
     
+
+print("the total area is "+ str(total))
